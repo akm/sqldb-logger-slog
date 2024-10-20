@@ -9,7 +9,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/akm/sqldbloggerslog"
+	sqldbloggerslog "github.com/akm/sqldb-logger-slog"
 	_ "github.com/mattn/go-sqlite3"
 	sqldblogger "github.com/simukti/sqldb-logger"
 	"github.com/stretchr/testify/assert"

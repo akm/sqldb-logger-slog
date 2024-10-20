@@ -1,4 +1,4 @@
-module github.com/akm/sqldbloggerslog
+module github.com/akm/sqldb-logger-slog
 
 go 1.21
 
