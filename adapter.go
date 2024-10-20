@@ -9,18 +9,18 @@ import (
 	sqldblogger "github.com/simukti/sqldb-logger"
 )
 
-type slogAdapter struct {
+type adapter struct {
 	logger *slog.Logger
 }
 
 // New creates a log adapter from sqldblogger.Logger to an slog.Logger one.
 func New(logger *slog.Logger) sqldblogger.Logger {
-	return &slogAdapter{logger: logger}
+	return &adapter{logger: logger}
 }
 
 // Log implement sqldblogger.Logger and converts its levels to corresponding
 // log/slog ones.
-func (a *slogAdapter) Log(ctx context.Context, sqldbLevel sqldblogger.Level, msg string, data map[string]interface{}) {
+func (a *adapter) Log(ctx context.Context, sqldbLevel sqldblogger.Level, msg string, data map[string]interface{}) {
 	attrs := make([]slog.Attr, 0, len(data))
 	for k, v := range data {
 		attrs = append(attrs, slog.Any(k, v))
