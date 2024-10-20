@@ -29,7 +29,7 @@ func TestWithSqlite3(t *testing.T) {
 		Level    string
 		Msg      string
 		Query    string
-		Args     []any
+		Args     []interface{}
 		Duration float64
 		Error    string
 	}
@@ -44,7 +44,7 @@ func TestWithSqlite3(t *testing.T) {
 	tests := []struct {
 		name  string
 		query string
-		args  []any
+		args  []interface{}
 		level string
 		msg   string
 		error string
@@ -58,7 +58,7 @@ func TestWithSqlite3(t *testing.T) {
 		{
 			name:  "INSERT",
 			query: "INSERT INTO users (name, age) VALUES (?, ?)",
-			args:  []any{"alice", float64(20)},
+			args:  []interface{}{"alice", float64(20)},
 			level: "INFO",
 			msg:   "ExecContext",
 		},
@@ -72,7 +72,7 @@ func TestWithSqlite3(t *testing.T) {
 		{
 			name:  "unique constraint",
 			query: "INSERT INTO users (name, age) VALUES (?, ?)",
-			args:  []any{"alice", float64(40)},
+			args:  []interface{}{"alice", float64(40)},
 			level: "ERROR",
 			msg:   "ExecContext",
 			error: "UNIQUE constraint failed",
